@@ -1,27 +1,32 @@
-# Curso Intermediário de Angular - Digital Innovation One
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Twitter)](https://twitter.com/passosmf)
+[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/passosmf/)](https://www.linkedin.com/in/passosmf/)
 
-Esse curso foi feito para a plataforma [Digital Innovation One](https://digitalinnovation.one/)
 
-O curso consiste em um sistema de filmes, com a possibilidade de cadastros, edições, listagem e visualização dos filmes.
+[Twitter URL]: https://twitter.com/passosmf
+[linkedin-url]: https://linkedin.com/in/passosmf
+[product-screenshot]: images/screenshot.png
 
-## Instalação
+<p align="center">
+ <img alt="Angular" src="https://img.shields.io/badge/angular%20-%23DD0031.svg?&style=for-the-badge&logo=angular&logoColor=white"/>
+ <img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
+</p>
 
-1. clone o repositório `git clone git@github.com:RenanRB/curso-angular.git`
-2. Entre no projeto e instale as dependencias `npm install`
+<p align="center">
+  <p align="center">
+     A simple project just to sharp some Angular 8 skills.
+    <br />
+    <br />
+ 
+  </p>
+ </p>
 
-## Ambiente Local
+# Movies
 
-Execute `ng serve` para que o projeto suba localmente. Acesse a url `http://localhost:4200/`. O projeto já está com reload automático conforme as alterações que você realizar no código
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
-## Simulando o Back-end
+A manager movies list that allows create, edit and list your favourites movies.
 
-Execute `npm install -g json-server` para instalar globalmente o servidor json. Após a instalação entre na pasta do projeto e execute `json-server --watch db.json`, com isso um servidor será inicializado na url `http://localhost:3000/`, após a inicialização sera possível realizar requisições http.
+[Twitter URL]: https://twitter.com/passosmf
+[linkedin-url]: https://linkedin.com/in/passosmf
 
-## Gerando componente
-
-Execute `ng generate component nome-do-componente` para criar um novo componente. Você também pode usuar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Execute `ng build` para gerar o compilado do projeto. O projeto vai ser criado dentro do diretório `dist/`. Adicionar `--prod` junto comando de build para gerar minificado e pronto para o ambiente de produção.
 
