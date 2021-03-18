@@ -8,11 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './shared/material/material.module';
+import { HeadComponent } from './shared/components/head/head.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeadComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<mat-toolbar class="app-title">Create Movie</mat-toolbar>
+<div class="main-div">
+  <mat-card class="center width50">
+    <form autocomplete="off" novalidate [formGroup]="createForm"
+    (ngSubmit)="submit()" (ngReset)="resetForm()">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input matInput
+          placeholder="Title" name="title" formControlName="title"/>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput
+          placeholder="Link Photo" name="urlPhoto" formControlName="urlPhoto"/>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input  matInput
+            readonly
+            [matDatepicker]="picker"
+            placeholder="Release Date"
+            name="releaseDate"
+            formControlName="releaseDate"
+            (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea  matInput
+            placeholder="Description"
+            name="description"
+            formControlName="description">
+          </textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput
+          type="number" min="0" max="10" step="1"
+          placeholder="Rating IMDb" name="rating" formControlName="rating"/>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput
+          placeholder="Link IMDb" name="urlIMDb" formControlName="urlIMDb"/>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Genre" formControlName="genre">
+            <mat-option value="action">Action</mat-option>
+            <mat-option value="adventure">Adventure</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" color="accent" mat-raised-button>Save</button>
+        <button type="reset" color="warn" mat-raised-button>Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
