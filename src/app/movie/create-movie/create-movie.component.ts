@@ -12,10 +12,14 @@ export class CreateMovieComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
+  get f() {
+    return this.createForm.controls;
+  }
+
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlPhoto: ['', [Validators.minLength(3)]],
+      urlPhoto: ['', [Validators.required, Validators.minLength(3)]],
       releaseDate: ['', [Validators.required]],
       description: [''],
       rating: ['0', [Validators.required, Validators.min(0), Validators.max(10)]],
@@ -26,6 +30,7 @@ export class CreateMovieComponent implements OnInit {
   }
 
   submit(): void {
+    this.createForm.markAllAsTouched();
     if (this.createForm.invalid) {
       return;
     }

@@ -6,20 +6,26 @@
       <mat-card-content>
         <mat-form-field class="full-width">
           <input matInput
-          placeholder="Title" name="title" formControlName="title"/>
+          placeholder="Title *" name="title" formControlName="title"/>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.title.errors && f.title.errors.required">Campo obrigatório.</mat-error>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.title.errors && f.title.errors.minlength">Campo precisa ter no mínimo 2 caracteres.</mat-error>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.title.errors && f.title.errors.maxlength">Campo pode ter no máximo 256 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput
           placeholder="Link Photo" name="urlPhoto" formControlName="urlPhoto"/>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.urlPhoto.errors && f.urlPhoto.errors.required">Campo obrigatório.</mat-error>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.urlPhoto.errors && f.urlPhoto.errors.minlength">Campo precisa ter no mínimo 10 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <input  matInput
             readonly
             [matDatepicker]="picker"
-            placeholder="Release Date"
+            placeholder="Release Date *"
             name="releaseDate"
             formControlName="releaseDate"
             (click)="picker.open()">
+            <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.releaseDate.errors && f.releaseDate.errors.required">Campo obrigatório.</mat-error>
             <mat-datepicker-toggle matSuffix [for]="picker">
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -34,17 +40,21 @@
         <mat-form-field class="full-width">
           <input matInput
           type="number" min="0" max="10" step="1"
-          placeholder="Rating IMDb" name="rating" formControlName="rating"/>
+          placeholder="Rating IMDb *" name="rating" formControlName="rating"/>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.rating.errors && f.rating.errors.required">Campo obrigatório.</mat-error>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.rating.errors && f.rating.errors.min">Campo precisa ter no mínimo o valor 0.</mat-error>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.rating.errors && f.rating.errors.max">Campo pode ter no máximo o valor 10.</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput
           placeholder="Link IMDb" name="urlIMDb" formControlName="urlIMDb"/>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-select placeholder="Genre" formControlName="genre">
+          <mat-select placeholder="Genre *" formControlName="genre">
             <mat-option value="action">Action</mat-option>
             <mat-option value="adventure">Adventure</mat-option>
           </mat-select>
+          <mat-error *ngIf="(createForm.touched || createForm.dirty) && f.genre.errors && f.genre.errors.required">Campo obrigatório.</mat-error>
         </mat-form-field>
         </mat-card-content>
       <mat-card-actions>
