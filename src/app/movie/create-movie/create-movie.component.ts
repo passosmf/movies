@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidateFieldsService } from 'src/app/shared/components/fields/validate-fields.service';
 
 @Component({
   selector: 'dio-create-movie',
@@ -10,7 +11,7 @@ export class CreateMovieComponent implements OnInit {
 
   createForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(public validator: ValidateFieldsService, private formBuilder: FormBuilder) { }
 
   get f() {
     return this.createForm.controls;
