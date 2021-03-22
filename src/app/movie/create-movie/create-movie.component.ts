@@ -10,6 +10,7 @@ import { ValidateFieldsService } from 'src/app/shared/components/fields/validate
 export class CreateMovieComponent implements OnInit {
 
   createForm: FormGroup;
+  genres: Array<string>;
 
   constructor(public validator: ValidateFieldsService, private formBuilder: FormBuilder) { }
 
@@ -19,15 +20,16 @@ export class CreateMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlPhoto: ['', [Validators.required, Validators.minLength(3)]],
+      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      urlPhoto: ['', [Validators.required, Validators.minLength(2)]],
       releaseDate: ['', [Validators.required]],
       description: [''],
       rating: ['0', [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlIMDb: ['', [Validators.minLength(10)]],
+      urlIMDb: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', [Validators.required]]
     });
 
+    this.genres = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
   }
 
   submit(): void {

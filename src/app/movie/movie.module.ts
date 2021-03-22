@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { MaterialModule } from '../shared/material/material.module';
+import { FieldsModule } from '../shared/components/fields/fields.module';
 
 @NgModule({
   imports: [
@@ -13,7 +12,7 @@ import { MaterialModule } from '../shared/material/material.module';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    InfiniteScrollModule
+    FieldsModule
   ],
   declarations: [CreateMovieComponent]
 })

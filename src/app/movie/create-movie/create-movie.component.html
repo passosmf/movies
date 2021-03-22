@@ -4,58 +4,13 @@
     <form autocomplete="off" novalidate [formGroup]="createForm"
     (ngSubmit)="submit()" (ngReset)="resetForm()">
       <mat-card-content>
-        <mat-form-field class="full-width">
-          <input matInput
-          placeholder="Title *" name="title" formControlName="title"/>
-          <mat-error *ngIf="validator.hasError(f.title, 'required')">Campo obrigatório.</mat-error>
-          <mat-error *ngIf="validator.hasError(f.title, 'minlength')">Campo precisa ter no mínimo 2 caracteres.</mat-error>
-          <mat-error *ngIf="validator.hasError(f.title, 'maxlength')">Campo pode ter no máximo 256 caracteres.</mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput
-          placeholder="Link Photo" name="urlPhoto" formControlName="urlPhoto"/>
-          <mat-error *ngIf="validator.hasError(f.urlPhoto, 'required')">Campo obrigatório.</mat-error>
-          <mat-error *ngIf="validator.hasError(f.urlPhoto, 'minlength')">Campo precisa ter no mínimo 10 caracteres.</mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input  matInput
-            readonly
-            [matDatepicker]="picker"
-            placeholder="Release Date *"
-            name="releaseDate"
-            formControlName="releaseDate"
-            (click)="picker.open()">
-            <mat-error *ngIf="validator.hasError(f.releaseDate, 'required')">Campo obrigatório.</mat-error>
-            <mat-datepicker-toggle matSuffix [for]="picker">
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <textarea  matInput
-            placeholder="Description"
-            name="description"
-            formControlName="description">
-          </textarea>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput
-          type="number" min="0" max="10" step="1"
-          placeholder="Rating IMDb *" name="rating" formControlName="rating"/>
-          <mat-error *ngIf="validator.hasError(f.rating, 'required')">Campo obrigatório.</mat-error>
-          <mat-error *ngIf="validator.hasError(f.rating, 'min')">Campo precisa ter no mínimo o valor 0.</mat-error>
-          <mat-error *ngIf="validator.hasError(f.rating, 'max')">Campo pode ter no máximo o valor 10.</mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput
-          placeholder="Link IMDb" name="urlIMDb" formControlName="urlIMDb"/>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Genre *" formControlName="genre">
-            <mat-option value="action">Action</mat-option>
-            <mat-option value="adventure">Adventure</mat-option>
-          </mat-select>
-          <mat-error *ngIf="validator.hasError(f.genre, 'required')">Campo obrigatório.</mat-error>
-        </mat-form-field>
+        <dio-input-text title="Title *" controlName="title" [formGroup]="createForm"></dio-input-text>
+        <dio-input-text title="Link Photo" controlName="urlPhoto" [formGroup]="createForm"></dio-input-text>
+        <dio-input-date title="Release Date *" controlName="releaseDate" [formGroup]="createForm"></dio-input-date>
+        <dio-input-textarea title="Description" controlName="description" [formGroup]="createForm"></dio-input-textarea>
+        <dio-input-number title="Rating *" controlName="rating" step="0.1" [formGroup]="createForm"></dio-input-number>
+        <dio-input-text title="Link IMDb *" controlName="urlIMDb" [formGroup]="createForm"></dio-input-text>
+        <dio-input-select title="Genre *" [options]="genres" controlName="genre" [formGroup]="createForm"></dio-input-select>
         </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button>Save</button>
