@@ -26,6 +26,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 A manager movies list that allows create, edit and list your favourites movies.
 
+# Back-end
+
+A mock back-end server was created based on JSON Server (https://github.com/typicode/json-server)
+
+After clone the project, open the terminal, go to project folder and execute below commands:
+
+To install json-server run: npm install -g json-server
+
+To run: json-server --watch db.json
+
+To test: open the browser and access: http://localhost:3000/movies/
+
+
+
 [Twitter URL]: https://twitter.com/passosmf
 [linkedin-url]: https://linkedin.com/in/passosmf
 
