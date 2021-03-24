@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MovieService } from 'src/app/core/movie.service';
 import { ValidateFieldsService } from 'src/app/shared/components/fields/validate-fields.service';
+import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
   selector: 'dio-create-movie',
@@ -12,7 +14,10 @@ export class CreateMovieComponent implements OnInit {
   createForm: FormGroup;
   genres: Array<string>;
 
-  constructor(public validator: ValidateFieldsService, private formBuilder: FormBuilder) { }
+  constructor(
+    public validator: ValidateFieldsService,
+    private formBuilder: FormBuilder,
+    private movieService: MovieService) { }
 
   get f() {
     return this.createForm.controls;
@@ -38,10 +43,20 @@ export class CreateMovieComponent implements OnInit {
       return;
     }
 
-    alert(JSON.stringify(this.createForm.value, null, 4));
+    const movie = this.createForm.getRawValue() as Movie;
+    this.save(movie);
   }
 
   resetForm(): void {
     this.createForm.reset();
+  }
+
+  private save(movie: Movie): void {
+    this.movieService.save(movie).subscribe(() => {
+      alert('a');
+    },
+    () => {
+      alert('b');
+    });
   }
 }
