@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MovieService } from 'src/app/core/movie.service';
 import { ValidateFieldsService } from 'src/app/shared/components/fields/validate-fields.service';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
@@ -16,6 +18,7 @@ export class CreateMovieComponent implements OnInit {
 
   constructor(
     public validator: ValidateFieldsService,
+    public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private movieService: MovieService) { }
 
@@ -53,7 +56,10 @@ export class CreateMovieComponent implements OnInit {
 
   private save(movie: Movie): void {
     this.movieService.save(movie).subscribe(() => {
-      alert('a');
+
+      const dialogRef = this.dialog.open(ModalComponent);
+
+
     },
     () => {
       alert('b');

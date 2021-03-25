@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './shared/material/material.module';
 import { HeadComponent } from './shared/components/head/head.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AppComponent,
     HeadComponent,
     FooterComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     MaterialModule,
     AppRoutingModule
   ],
-  entryComponents: [],
+  entryComponents: [ModalComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
