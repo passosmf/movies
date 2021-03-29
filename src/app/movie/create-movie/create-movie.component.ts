@@ -5,6 +5,7 @@ import { MovieService } from 'src/app/core/movie.service';
 import { ValidateFieldsService } from 'src/app/shared/components/fields/validate-fields.service';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { Movie } from 'src/app/shared/models/movie';
+import { Warning } from 'src/app/shared/models/warning';
 
 @Component({
   selector: 'dio-create-movie',
@@ -57,7 +58,17 @@ export class CreateMovieComponent implements OnInit {
   private save(movie: Movie): void {
     this.movieService.save(movie).subscribe(() => {
 
-      const dialogRef = this.dialog.open(ModalComponent);
+      const config = {
+        data: {
+          buttonSuccess: 'Go to list',
+          buttonCancel: 'Create a new movie',
+          buttonSuccessCollor: 'accent',
+          buttonCancelCollor: 'primary',
+          hasCloseButton: true
+        } as Warning
+      };
+
+      const dialogRef = this.dialog.open(ModalComponent, config);
 
 
     },
