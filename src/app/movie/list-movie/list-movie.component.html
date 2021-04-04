@@ -1,0 +1,19 @@
+<mat-toolbar class="app-title">Movies</mat-toolbar>
+<div class="home-content">
+  <mat-card class="home-card" *ngFor="let movie of movies">
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>{{movie.title}}</mat-card-title>
+      <mat-card-subtitle>{{movie.genre}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="movie.urlPhoto" >
+    <mat-card-content>
+      <p class="quebrar-linha">
+        {{movie.description || 'No description'}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button color="accent" mat-raised-button (click)="open(movie.id)">Open</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

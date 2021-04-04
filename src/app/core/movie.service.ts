@@ -20,6 +20,10 @@ export class MovieService {
     return this.http.put<Movie>(url + movie.id, movie);
   }
 
+  list(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(url);
+  }
+
   view(id: number): Observable<Movie> {
     return this.http.get<Movie>(url + id);
   }
