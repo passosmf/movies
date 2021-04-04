@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MovieService } from 'src/app/core/movie.service';
 import { ValidateFieldsService } from 'src/app/shared/components/fields/validate-fields.service';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
@@ -21,7 +22,8 @@ export class CreateMovieComponent implements OnInit {
     public validator: ValidateFieldsService,
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private movieService: MovieService) { }
+    private movieService: MovieService,
+    private router: Router) { }
 
   get f() {
     return this.createForm.controls;
@@ -57,7 +59,6 @@ export class CreateMovieComponent implements OnInit {
 
   private save(movie: Movie): void {
     this.movieService.save(movie).subscribe(() => {
-
       const config = {
         data: {
           buttonSuccess: 'Go to list',
@@ -69,11 +70,26 @@ export class CreateMovieComponent implements OnInit {
       };
 
       const dialogRef = this.dialog.open(ModalComponent, config);
-
+      dialogRef.afterClosed().subscribe((opcao: boolean) => {
+        if (opcao) {
+          this.router.navigateByUrl('movies');
+        } else {
+          this.resetForm();
+        }
+      });
 
     },
     () => {
-      alert('b');
+      const config = {
+        data: {
+          title: 'Error!',
+          description: 'Request failed.',
+          buttonSuccess: 'Close',
+          buttonCancel: 'Create a new movie',
+          buttonSuccessCollor: 'warn'
+        } as Warning
+      };
+      this.dialog.open(ModalComponent, config);
     });
   }
 }
