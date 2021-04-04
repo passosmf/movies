@@ -6,14 +6,14 @@ import { CreateMovieComponent } from './movie/create-movie/create-movie.componen
 const routes: Routes = [
   {
       path: '',
-      redirectTo: 'filmes',
+      redirectTo: 'movies',
       pathMatch: 'full'
   },
   {
-    path: 'filmes',
+    path: 'movies',
     children: [
       {
-        path: 'cadastro',
+        path: 'create',
         children: [
           {
             path: '',
@@ -27,7 +27,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: 'filmes' },
+  { path: '**', redirectTo: 'movies' },
 
 ];
 
