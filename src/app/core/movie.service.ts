@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../shared/models/movie';
@@ -20,8 +20,11 @@ export class MovieService {
     return this.http.put<Movie>(url + movie.id, movie);
   }
 
-  list(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(url);
+  list(page: number, quantity: number): Observable<Movie[]> {
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('_page', page.toString());
+    httpParams = httpParams.set('_limit', quantity.toString());
+    return this.http.get<Movie[]>(url, {params: httpParams});
   }
 
   view(id: number): Observable<Movie> {
