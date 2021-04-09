@@ -22,14 +22,14 @@
   </form>
 </mat-card>
 
-<div class="home-content" infiniteScroll (scrolled)="onScroll()">
+<div class="home-content" infiniteScroll (scrolled)="onScroll()" *ngIf="movies.length; else noRecords">
   <mat-card class="home-card" *ngFor="let movie of movies">
     <mat-card-header>
       <div mat-card-avatar></div>
       <mat-card-title>{{movie.title}}</mat-card-title>
       <mat-card-subtitle>{{movie.genre}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="movie.urlPhoto" >
+    <img mat-card-image [src]="movie.urlPhoto || noImage" >
     <mat-card-content>
       <p class="quebrar-linha">
         {{movie.description || 'No description'}}
@@ -40,3 +40,7 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+<ng-template #noRecords>
+  <h1 class="full-width main-div">No records found!</h1>
+</ng-template>

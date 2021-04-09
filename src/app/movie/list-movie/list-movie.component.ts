@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { MovieService } from 'src/app/core/movie.service';
 import { ConfigPrams } from 'src/app/shared/models/config-prams';
 import { Movie } from 'src/app/shared/models/movie';
@@ -10,6 +11,8 @@ import { Movie } from 'src/app/shared/models/movie';
   styleUrls: ['./list-movie.component.scss']
 })
 export class ListMovieComponent implements OnInit {
+
+  readonly noImage = 'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
 
   config: ConfigPrams = {
     page: 0,
@@ -28,6 +31,7 @@ export class ListMovieComponent implements OnInit {
     });
 
     this.filters.get('text').valueChanges
+    .pipe(debounceTime(400))
     .subscribe((val: string) => {
       this.config.search = val;
       this.resetSearch();

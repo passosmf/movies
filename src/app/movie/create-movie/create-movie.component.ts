@@ -32,7 +32,7 @@ export class CreateMovieComponent implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      urlPhoto: ['', [Validators.required, Validators.minLength(2)]],
+      urlPhoto: [''],
       releaseDate: ['', [Validators.required]],
       description: [''],
       rating: ['0', [Validators.required, Validators.min(0), Validators.max(10)]],
