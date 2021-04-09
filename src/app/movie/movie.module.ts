@@ -7,6 +7,7 @@ import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { FieldsModule } from '../shared/components/fields/fields.module';
 import { ListMovieComponent } from './list-movie/list-movie.component';
+import { DetailMovieComponent } from './detail-movie/detail-movie.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ListMovieComponent } from './list-movie/list-movie.component';
     FieldsModule,
     InfiniteScrollModule
   ],
-  declarations: [CreateMovieComponent, ListMovieComponent]
+  declarations: [CreateMovieComponent, ListMovieComponent, DetailMovieComponent]
 })
 export class MovieModule { }
