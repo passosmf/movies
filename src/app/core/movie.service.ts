@@ -1,7 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ConfigPrams } from '../shared/models/config-prams';
 import { Movie } from '../shared/models/movie';
+import { ConfigParamsService } from './config-params.service';
 
 const url = 'http://localhost:3000/movies/';
 
@@ -10,7 +12,7 @@ const url = 'http://localhost:3000/movies/';
 })
 export class MovieService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private configService: ConfigParamsService) { }
 
   save(movie: Movie): Observable<Movie> {
     return this.http.post<Movie>(url, movie);
@@ -20,11 +22,9 @@ export class MovieService {
     return this.http.put<Movie>(url + movie.id, movie);
   }
 
-  list(page: number, quantity: number): Observable<Movie[]> {
-    let httpParams = new HttpParams();
-    httpParams = httpParams.set('_page', page.toString());
-    httpParams = httpParams.set('_limit', quantity.toString());
-    return this.http.get<Movie[]>(url, {params: httpParams});
+  list(config: ConfigPrams): Observable<Movie[]> {
+    const configParams = this.configService.setupParams(config);
+    return this.http.get<Movie[]>(url, {params: configParams});
   }
 
   view(id: number): Observable<Movie> {
