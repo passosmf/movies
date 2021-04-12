@@ -109,16 +109,6 @@
       "urlIMDb": "https://www.imdb.com/title/tt2527338/?ref_=vi_md_ti",
       "genre": "Aventura",
       "id": 11
-    },
-    {
-      "title": "The Seventh Day",
-      "urlPhoto": "https://www.imdb.com/title/tt11263022/mediaviewer/rm2367736065/",
-      "releaseDate": "2021-03-24T03:00:00.000Z",
-      "description": "A renowned exorcist who teams up with a rookie priest for his first day of training. As they plunge deeper into hell on earth, the lines between good and evil blur, and their own demons emerge.",
-      "rating": 4.5,
-      "urlIMDb": "https://www.imdb.com/title/tt11263022/?ref_=tt_mv_close",
-      "genre": "Terror",
-      "id": 12
     }
   ]
 }

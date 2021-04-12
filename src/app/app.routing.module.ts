@@ -19,12 +19,6 @@ const routes: Routes = [
         component: ListMovieComponent
       },
       {
-        path: ':id',
-        component: DetailMovieComponent,
-        pathMatch: 'full'
-      }
-      ,
-      {
         path: 'create',
         children: [
           {
@@ -36,6 +30,11 @@ const routes: Routes = [
             component: CreateMovieComponent
           }
         ]
+      },
+      {
+        path: ':id',
+        component: DetailMovieComponent,
+        pathMatch: 'full'
       }
     ]
   },

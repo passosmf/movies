@@ -1,8 +1,7 @@
 <mat-toolbar class="app-title">Create Movie</mat-toolbar>
 <div class="main-div">
-  <mat-card class="center width50">
-    <form autocomplete="off" novalidate [formGroup]="createForm"
-    (ngSubmit)="submit()" (ngReset)="resetForm()">
+  <mat-card class="center width50" *ngIf="createForm" >
+    <form autocomplete="off" novalidate [formGroup]="createForm" (ngSubmit)="submit()" (ngReset)="resetForm()">
       <mat-card-content>
         <dio-input-text title="Title *" controlName="title" [formGroup]="createForm"></dio-input-text>
         <dio-input-text title="Link Photo" controlName="urlPhoto" [formGroup]="createForm"></dio-input-text>

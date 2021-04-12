@@ -30,7 +30,7 @@ export class DetailMovieComponent implements OnInit {
   }
 
   edit(): void {
-    this.router.navigateByUrl('/filmes/cadastro/' + this.id);
+    this.router.navigateByUrl('/movies/create/' + this.id);
   }
 
   delete(): void {
